@@ -1,0 +1,13 @@
+{
+  "gate": "CLI_AND_REPEATED_RESET_CORRECTNESS_PASS",
+  "tokens": 9,
+  "token_ids_match_vanilla": true,
+  "finish_reason": "eos",
+  "vanilla_generation_seconds": 1.9483260410488583,
+  "fresh_coreml_cli_generation_seconds": 56.437787832983304,
+  "same_coreml_instance_generation_seconds": [
+    48.225206916977186,
+    1.9145412080106325
+  ],
+  "observation": "Fresh Core ML processes showed48\u201356 second first generation; immediate repeated request1.91 seconds. Cause not isolated. Startup cost and first-request delay remain release work; not a steady-state performance comparison. Background HF upload was running."
+}

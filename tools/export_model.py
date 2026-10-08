@@ -6,6 +6,7 @@ parser=argparse.ArgumentParser()
 parser.add_argument('--manifest',type=Path,required=True)
 parser.add_argument('--draft',type=Path,required=True)
 parser.add_argument('--output',type=Path,required=True)
+parser.add_argument('--compact-context',action='store_true',help='Repack unused context constants (requires coremltools 9)')
 args=parser.parse_args()
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from dflash_coreml.manifest import load_manifest
@@ -21,7 +22,11 @@ try:
    relative=f'models/{"full" if key=="packages" else "context"}-{i}.mlpackage'
    dest=args.output/relative
    dest.parent.mkdir(exist_ok=True)
-   if sys.platform=='darwin':
+   if args.compact_context and key=='context_packages':
+    from compact_context import compact
+    compact(Path(path),dest)
+    raw[key][i]['files']={str(p.relative_to(dest)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file()}
+   elif sys.platform=='darwin':
     # Copy-on-write clone avoids duplicating multi-GB local weight blobs on APFS.
     result=subprocess.run(['cp','-cR',path,str(dest)],capture_output=True)
     if result.returncode:

@@ -1,0 +1,119 @@
+[
+  {
+    "package": "context-0.mlpackage",
+    "before_bytes": 928426585,
+    "after_bytes": 173073812,
+    "graph_unchanged_except_blob_offsets": true,
+    "constants_byte_exact": true,
+    "constants": [
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10240,
+        "sha256": "a1146924b129cfd31ca619ee109cc441d5505f0c812c5dc46639523d2d99b912"
+      },
+      {
+        "dtype": "INT8",
+        "bytes": 131072000,
+        "sha256": "863a9d9e391508d19a2fd5e494a4dec2451585b0a2880b95ce4777aa1389d398"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10240,
+        "sha256": "a7790e370c927e20efe0038ef8e55714044e5352dd54f5dc64bdffde5814e469"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "376cb531a81ba439d5396ca66ebcad5be53d5d3bd453eaea12f832f2ef6bd2a8"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 256,
+        "sha256": "288bf87d1d2156b61db59f76a40c55ff950b729bc039ce0d2f5ff9bbdd714794"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "d5f7d21436ecd14d4e0fc1ebdd3351fc1deda3af9bb8dd46a813bd20b1555b05"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "36542ab67cbab9db8f801997dac0bc765646f2ad7b1c2b0be316b01e0b809386"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 256,
+        "sha256": "20f0f0bbc409e7b56e22590d537ba17df52b41da07267763c539dbf13f46ad94"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "a1fe0880b2f98f9d5288cb579dade1e830e44ef3e623ea9d34e8997417afa7b8"
+      }
+    ]
+  },
+  {
+    "package": "context-1.mlpackage",
+    "before_bytes": 797329656,
+    "after_bytes": 41976882,
+    "graph_unchanged_except_blob_offsets": true,
+    "constants_byte_exact": true,
+    "constants": [
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "e45268264fe791224ac767103caf6460ea0a266d836f0a2272db37a6de6c75f5"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 256,
+        "sha256": "7811a3578ebb9c5bbac06f2077584ed944de9acfc86ca8408f6fb195eb5fa39d"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "885a8fa953a1f971329c338f37a3b0663ed4b272c451c7b4af8adb3b04907b77"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "2050442edf7f8dab86af94f7079a6a32e028c8931dc02b3dc8552a9f6e18ac34"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 256,
+        "sha256": "e03d2fcddfdb92e5e7ab4c12421b080b876ef9e53ebc40d56a6a4603007e54a7"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "ef5ab2f1e9c9e40cddcebc5d79b35d9124be398f7714f05a9fc332cb76749a5c"
+      }
+    ]
+  },
+  {
+    "package": "context-2.mlpackage",
+    "before_bytes": 665988253,
+    "after_bytes": 20989594,
+    "graph_unchanged_except_blob_offsets": true,
+    "constants_byte_exact": true,
+    "constants": [
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "163f182f6133646ef9a5ebf9e2ba48b489f2657f96f2add3f988b95bfcbb9a03"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 256,
+        "sha256": "479f5e3824d8eda52582f2afa72a61c720cea17d91869d5934357155e3523e7a"
+      },
+      {
+        "dtype": "FLOAT16",
+        "bytes": 10485760,
+        "sha256": "15f3e23ac4ccfc8a0203db161edc2baba2d3d2a96cc38706f052c9b7a66c5c2c"
+      }
+    ]
+  }
+]

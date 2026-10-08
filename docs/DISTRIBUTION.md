@@ -6,6 +6,8 @@
 
 The source repo contains the reusable drafter backend and `examples/mlx_generate.py`: download the HF Core ML bundle and generate using a separate MLX target. The target model is not bundled with the drafter. The HF directory contains six Core ML packages, compact selector weights, original config, SHA manifest, Apache license and model card.
 
-`YOUR_HF_ACCOUNT` remains a placeholder until the HF owner is supplied. Source is public at https://github.com/uqer1244/dflash-coreml. The HF model has not been published and no oMLX PR has been submitted. oMLX PR work is explicitly deferred.
+Source is public at https://github.com/uqer1244/dflash-coreml. The public HF repository https://huggingface.co/uqer1244/Qwen3.8-27B-DFlash2-CoreML has been created; compact weight upload is in progress. Until its model manifest and weight files are committed, use the prepared local bundle. No oMLX PR has been submitted; that work is explicitly deferred.
 
-Local validation currently includes backbone hardware parity and a32-token standalone result matching the research token IDs. The attempted full128-token standalone suite was interrupted at the user's pause request and has no completed PASS report. Do not present it as completed validation. Live HF download of this unpublished bundle also remains untested.
+Release-source ZIP validation is complete: extracted outside the project, installed non-editably into a fresh venv using public pinned runtime packages, built the Swift bridge, passed11 tests and model hashes, and generated four fixtures up to128 tokens. Token IDs and EOS/length match the prior research references, repeated reset matches, and no-thinking answers Seoul. See `STANDALONE_VALIDATION.json`. Live HF download remains untested pending upload.
+
+Context compaction reduced the complete prepared bundle from5.041 GB to2.885 GB (2.687 GiB). Four-fixture actual state/output parity passed80 cycles /264 feature commits. Disk reduction is not a runtime memory measurement. See `CONTEXT_COMPACTION.md`.

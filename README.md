@@ -20,7 +20,7 @@ The model bundle contains six `.mlpackage` directories, selector-only weights an
 [Python execution example](examples/mlx_generate.py) downloads your HF drafter bundle and combines it with the MLX target:
 
 ```sh
-python examples/mlx_generate.py --hf-owner YOUR_HF_ACCOUNT \
+python examples/mlx_generate.py --hf-owner uqer1244 \
   --prompt "What is the capital of South Korea?" --no-thinking
 ```
 
@@ -45,12 +45,12 @@ dflash-coreml generate \
 ```sh
 dflash-coreml generate \
   --model nathansutton/Qwen3.8-27B-Ternary-Bonsai-2-DFlash2-MLX \
-  --draft-model YOUR_HF_ACCOUNT/Qwen3.8-27B-DFlash2-CoreML \
+  --draft-model uqer1244/Qwen3.8-27B-DFlash2-CoreML \
   --coreml-revision YOUR_PUBLISHED_COMMIT \
   --prompt 'Explain a CPU, GPU and NPU briefly.' --max-tokens 128 --no-thinking
 ```
 
-Repository/commit placeholders are intentional; there is no live Core ML model URL yet. `--target-revision` pins the target snapshot; the bundle rejects target/selector hashes that differ from the verified pairing. `--bridge` overrides the default `build/ane-bridge`. Downloads are weights/config/tokenizer files, not executable remote Python.
+The public HF repository has been created; weight upload is pending. Replace the commit placeholder after publication. `--target-revision` pins the target snapshot; the bundle rejects target/selector hashes that differ from the verified pairing. `--bridge` overrides the default `build/ane-bridge`. Downloads are weights/config/tokenizer files, not executable remote Python.
 
 Options include `--prompt-file`, `--json-output` (token IDs, timings and finish reason), `--proposal-count 1..5` (default2), and `--history stock|deferred` (defaultdeferred). The default chat template retains thinking; `--no-thinking` requests direct answers. Text is printed after generation; this preview does not implement token streaming or sampling.
 
@@ -76,10 +76,10 @@ From the existing research workspace, generate a manifest with the matching targ
 python tools/local_manifest.py --workspace /path/to/research-workspace \
   --target /path/to/compatible-Bonsai2-target --output local-manifest.json
 python tools/export_model.py --manifest local-manifest.json \
-  --draft /path/to/original-DFlash2-checkpoint --output model-release
+  --draft /path/to/original-DFlash2-checkpoint --output model-release --compact-context
 ```
 
-`model-release/` contains a model card, Apache license, model packages, compact selector weights and portable `model-manifest.json`. Export verifies hashes and never uploads. On APFS it attempts copy-on-write cloning for local package preparation. The exporter currently targets the exact recorded Qwen3.8-27B-DFlash2 source revision; conversion is still a separate research workflow. [Conversion status](docs/CONVERSION.md).
+`model-release/` contains a model card, Apache license, model packages, compact selector weights and portable `model-manifest.json`. Export verifies hashes and never uploads. `--compact-context` requires coremltools 9 and removes unused context constants without changing tensor bytes or graph operations. On APFS it attempts copy-on-write cloning for local package preparation. The exporter currently targets the exact recorded Qwen3.8-27B-DFlash2 source revision; conversion is still a separate research workflow. [Conversion status](docs/CONVERSION.md).
 
 ## Backbone API
 
@@ -94,6 +94,8 @@ with CoreMLBackbone(manifest_path, bridge_path) as backbone:
 Core ML runs fusion, all five drafter layers, final norm and KV updates as2+2+1 shards, block6/capacity31. Shared LM head, Top16, selector and target verification run outside Core ML. Earlier committed features use context-only graphs; the final one computes the proposal block. Each instance is single-request/synchronous.
 
 ## Validation and limits
+
+The source ZIP was extracted and installed into a fresh standalone environment: Swift build,11 tests, four generation fixtures up to128 tokens, repeated reset and no-thinking passed. Tested IDs/EOS match the research reference. Compact context packages preserve actual state and next output across264 commits. Fresh-process CLI checks showed a48–56 second first generation versus1.91 seconds for the repeated same-instance request; the cause remains under investigation. [Cold/warm record](docs/CLI_COLD_WARM_VALIDATION.json). The model bundle is approximately2.885 GB (2.687 GiB); runtime memory was not measured. [Standalone record](docs/STANDALONE_VALIDATION.json), [compaction](docs/CONTEXT_COMPACTION.md).
 
 Normal selector replay **91.07% is below the95% fidelity gate**. The runner is experimental/model-specific; arbitrary DFlash2 targets, general losslessness, server batching and GPU superiority are not established. See [results](docs/RESULTS.md), [release status](docs/RELEASE.md) and the hardware/standalone validation records in `docs/`.
 
