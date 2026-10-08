@@ -15,4 +15,5 @@ https://github.com/z-lab/dflash
 https://github.com/bstnxbt/dflash-mlx
 
 Model redistribution requires checking the exact original checkpoint's license
-and preserving required attribution. There is no released model-download URL yet.
+and preserving required attribution. Converted model weights are distributed separately at
+https://huggingface.co/uqer1244/Qwen3.8-27B-DFlash2-CoreML.

@@ -1,0 +1,7 @@
+{
+  "gate": "REMOTE_UPLOAD_FILE_HASH_PASS",
+  "repo": "uqer1244/Qwen3.8-27B-DFlash2-CoreML",
+  "revision": "c6d1fc8900c481d36392f5c68ba96927b263d541",
+  "verified_files": 24,
+  "scope": "Remote LFS SHA256 metadata versus local bytes; small files downloaded and hashed. Not live full-snapshot generation."
+}
