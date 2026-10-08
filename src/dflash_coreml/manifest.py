@@ -7,7 +7,8 @@ CONTRACT = {"hidden_size": 5120, "feature_size": 25600, "block_size": 6,
             "capacity": 31, "rope_theta": 10000000, "shards": 3}
 
 def load_manifest(path, verify_hashes=False):
-    path = Path(path).resolve()
+    # Preserve the snapshot directory when the manifest itself is a HF cache symlink.
+    path = Path(path).absolute()
     data = json.loads(path.read_text())
     if data.get("schema_version") != 1 or data.get("contract") != CONTRACT:
         raise ValueError("Unsupported model schema or backbone contract")
@@ -28,7 +29,12 @@ def load_manifest(path, verify_hashes=False):
                 if actual_files != set(expected):
                     raise ValueError(f"Package file inventory differs: {package}")
                 for name, digest in expected.items():
-                    f = (package / name).resolve()
+                    relative = Path(name)
+                    if relative.is_absolute() or '..' in relative.parts:
+                        raise ValueError("Package hash path escapes package")
+                    # HF snapshot files point into the blob cache; the pinned digest
+                    # authenticates those bytes without requiring a physical copy.
+                    f = package / relative
                     if not f.is_relative_to(package):
                         raise ValueError("Package hash path escapes package")
                     with f.open('rb') as stream:

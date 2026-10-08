@@ -54,6 +54,24 @@ for line in sys.stdin:
             with self.assertRaises(ValueError):backend.reset(-1)
     def test_hashes_required_by_default(self):
         with self.assertRaisesRegex(ValueError,'No file hashes'):load_manifest(self.manifest,True)
+    def test_hf_snapshot_manifest_and_weight_symlinks(self):
+        import hashlib
+        blobs=self.root/'blobs';blobs.mkdir()
+        weight=blobs/'weight';weight.write_bytes(b'cached weight')
+        package=self.root/'dummy.mlpackage'
+        (package/'weight.bin').symlink_to(weight)
+        data=json.loads(self.manifest.read_text())
+        for key in ['packages','context_packages']:
+            for row in data[key]:
+                row['files']={'weight.bin':hashlib.sha256(weight.read_bytes()).hexdigest()}
+        stored=blobs/'manifest';stored.write_text(json.dumps(data))
+        self.manifest.unlink();self.manifest.symlink_to(stored)
+        result=load_manifest(self.manifest,True)
+        self.assertEqual(result['packages'],[str(package)]*3)
+        weight.write_bytes(b'corrupted cache')
+        with self.assertRaisesRegex(ValueError,'hash mismatch'):
+            load_manifest(self.manifest,True)
+
     def test_dead_bridge_cleans_up(self):
         self.bridge.write_text(f'#!{sys.executable}\n')
         with self.assertRaisesRegex(RuntimeError,'bridge exited'):
