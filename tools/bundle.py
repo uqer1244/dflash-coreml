@@ -4,8 +4,8 @@ from pathlib import Path
 
 root=Path(__file__).resolve().parents[1]
 dist=root/'dist';dist.mkdir(exist_ok=True)
-allowed_files={'README.md','LICENSE','NOTICE','CHANGELOG.md','pyproject.toml','MANIFEST.in','.gitignore'}
-allowed_dirs={'src','native','examples','docs','tests','tools','.github','LICENSES'}
+allowed_files={'README.md','LICENSE','NOTICE','pyproject.toml','MANIFEST.in','.gitignore'}
+allowed_dirs={'src','native','examples','tests','tools','.github','LICENSES'}
 files=[]
 for p in sorted(root.rglob('*')):
  if not p.is_file() or p.is_symlink() or p.name=='.DS_Store':continue
