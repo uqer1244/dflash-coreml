@@ -35,24 +35,18 @@ The current runner is validated with a Bonsai2 text-only repack and checks its e
 ```sh
 dflash-coreml generate \
   --model /path/to/Qwen3.8-27B-target \
-  --coreml-model uqer1244/Qwen3.8-27B-DFlash2-CoreML \
-  --coreml-revision c6d1fc8900c481d36392f5c68ba96927b263d541 \
-  --prompt 'What is the capital of South Korea?' \
-  --max-tokens 128 --no-thinking
+  --prompt 'What is the capital of South Korea?'
 ```
 
-Python example:
+Or run the Python example:
 
 ```sh
 python examples/mlx_generate.py \
-  --hf-owner uqer1244 \
-  --revision c6d1fc8900c481d36392f5c68ba96927b263d541 \
   --model /path/to/Qwen3.8-27B-target \
-  --prompt 'What is the capital of South Korea?' \
-  --max-tokens 128 --no-thinking
+  --prompt 'What is the capital of South Korea?'
 ```
 
-Remove `--no-thinking` to use the model's default thinking mode. Add `--vanilla` to run the MLX target alone. If HF downloads stall, set `HF_HUB_DISABLE_XET=1`.
+Only the target and prompt are required. Add `--no-thinking` for direct answers or `--vanilla` to run the target alone. If HF downloads stall, set `HF_HUB_DISABLE_XET=1`.
 
 This is an experimental, greedy, text-only runner. The first Core ML request can be slow; tested fresh-process runs took approximately 73–75 seconds including loading. General output equivalence and a speed advantage over GPU drafting are not established.
 

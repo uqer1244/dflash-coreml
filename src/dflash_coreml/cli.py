@@ -40,6 +40,8 @@ def main():
     if args.max_tokens<1:parser.error('--max-tokens must be >=1')
     if args.timeout<=0:parser.error('--timeout must be positive')
     if args.manifest and args.coreml_model:parser.error('Choose --manifest or --coreml-model')
+    if not args.vanilla and not args.manifest and not args.coreml_model:
+        args.coreml_model='uqer1244/Qwen3.8-27B-DFlash2-CoreML'
     if not args.vanilla and not ((args.manifest or args.coreml_model) and args.bridge):
         parser.error('Core ML generation requires --manifest/--coreml-model and --bridge')
     if args.json_output and args.json_output.exists():parser.error('--json-output already exists')
@@ -52,7 +54,7 @@ def main():
         target=resolve_model(args.target,args.target_revision)
         draft=resolve_model(args.draft,args.draft_revision) if args.draft else None
         manifest=args.manifest
-        if args.coreml_model:
+        if args.coreml_model and not args.vanilla:
             manifest=resolve_model(args.coreml_model,args.coreml_revision,coreml=True)/'model-manifest.json'
         if not draft and not args.vanilla:
             data=json.loads(manifest.read_text())
