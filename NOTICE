@@ -1,0 +1,18 @@
+This preview contains the project's Python Core ML adapter and Swift bridge.
+src/dflash_coreml/target.py adapts the packed Hadamard operators and validation
+from oMLX's prism_hadamard_qwen35 implementation, distributed under Apache-2.0.
+It changes loading to text-only local checkpoints without an app installation.
+Upstream: https://github.com/jundot/omlx (Jundot and oMLX contributors).
+The Apache license is included in LICENSES/Apache-2.0.txt.
+The remaining project code is under the included MIT license.
+It does not bundle Apple frameworks, the rest of MLX/oMLX/dflash-mlx, the official
+CandidateSelector implementation, target checkpoints or converted model weights.
+
+The design uses Apple's Core ML APIs and is intended to interoperate with
+DFlash2 and MLX. References:
+https://github.com/jundot/omlx
+https://github.com/z-lab/dflash
+https://github.com/bstnxbt/dflash-mlx
+
+Model redistribution requires checking the exact original checkpoint's license
+and preserving required attribution. There is no released model-download URL yet.

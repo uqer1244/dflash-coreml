@@ -1,0 +1,128 @@
+{
+  "gate": "CORRECTNESS_AND_MEASURED_THROUGHPUT_PASS_ON_TESTED_FIXTURES",
+  "recommended_experimental_proposal_count": 2,
+  "baseline_proposal_count": 5,
+  "repeats": 5,
+  "fixtures": [
+    "short",
+    "medium",
+    "code",
+    "reasoning"
+  ],
+  "whole_output_median_gain": 0.07930110499628906,
+  "steady_median_gain": 0.09937278301352648,
+  "repeat_aggregate_ratios": [
+    1.0541910467632467,
+    1.1597072645618451,
+    1.0375988042392041,
+    1.1093241036506671,
+    1.0947366471758002
+  ],
+  "paired_fixture_ratios": {
+    "median": 1.080927087461761,
+    "min": 0.8473489102124536,
+    "max": 1.4059368516123825,
+    "improved": 19,
+    "count": 20
+  },
+  "metrics": {
+    "5": {
+      "verification_ms": {
+        "count": 135,
+        "median": 426.5563749941066,
+        "p95": 439.137417008169
+      },
+      "state_commit_ms": {
+        "count": 135,
+        "median": 6.88704097410664,
+        "p95": 11.790250020567328
+      },
+      "total_cycle_ms": {
+        "count": 135,
+        "median": 506.73170801019296,
+        "p95": 551.3673750101589
+      },
+      "backbone_ms": {
+        "count": 135,
+        "median": 56.94116500671953,
+        "p95": 77.77958404039964
+      },
+      "verify_plus_commit_ms": {
+        "count": 135,
+        "median": 432.64358304440975,
+        "p95": 450.9276670287363
+      },
+      "output_tok_s": {
+        "count": 20,
+        "median": 7.341911431968762,
+        "p95": 8.027586971216158
+      },
+      "steady_tok_s": {
+        "count": 20,
+        "median": 7.833060327449516,
+        "p95": 8.801007828983982
+      },
+      "acceptance_all": 0.6666666666666666,
+      "accepted_per_cycle_all": 3.096774193548387,
+      "repeats_aggregate_tok_s": [
+        7.405546771054543,
+        6.756798086175617,
+        7.3163583169337585,
+        7.103855197092025,
+        6.768174239410177
+      ]
+    },
+    "2": {
+      "verification_ms": {
+        "count": 220,
+        "median": 218.67562498664483,
+        "p95": 232.4437079951167
+      },
+      "state_commit_ms": {
+        "count": 220,
+        "median": 4.362249979749322,
+        "p95": 9.529708011541516
+      },
+      "total_cycle_ms": {
+        "count": 220,
+        "median": 286.6285409836564,
+        "p95": 313.25137498788536
+      },
+      "backbone_ms": {
+        "count": 220,
+        "median": 50.38331195828505,
+        "p95": 53.50025004008785
+      },
+      "verify_plus_commit_ms": {
+        "count": 220,
+        "median": 223.87733351206407,
+        "p95": 239.4414590089582
+      },
+      "output_tok_s": {
+        "count": 20,
+        "median": 7.924133121308772,
+        "p95": 8.154699146235147
+      },
+      "steady_tok_s": {
+        "count": 20,
+        "median": 8.61145333170102,
+        "p95": 9.373313723990655
+      },
+      "acceptance_all": 0.8229166666666666,
+      "accepted_per_cycle_all": 1.6458333333333333,
+      "repeats_aggregate_tok_s": [
+        7.80686110243217,
+        7.835907825715434,
+        7.5914446410360235,
+        7.880477798978244,
+        7.409368374353519
+      ]
+    }
+  },
+  "shared_rotation": "EXACT_BUT_NO_SPEED_GAIN",
+  "gate_up_fusion": "EXACT_BUT_NO_SPEED_GAIN",
+  "gather_dispatch": "MULTIPOSITION_EXACTNESS_FAIL_NOT_ADOPTED",
+  "phase3_normal_selector_gate": "FAIL",
+  "phase4_1_batch_gate": "FAIL",
+  "generality": "four short prompts, one target/checkpoint/device; no general long-context or GPU-vs-ANE superiority claim"
+}

@@ -1,0 +1,33 @@
+{
+  "gate": "BYTE_EXACT_CONTINUATION_PASS",
+  "rows": [
+    {
+      "fixture": "short",
+      "wide": 6,
+      "narrow": 3,
+      "steps": 12,
+      "exact": true
+    },
+    {
+      "fixture": "medium",
+      "wide": 6,
+      "narrow": 3,
+      "steps": 22,
+      "exact": true
+    },
+    {
+      "fixture": "code",
+      "wide": 6,
+      "narrow": 3,
+      "steps": 22,
+      "exact": true
+    },
+    {
+      "fixture": "reasoning",
+      "wide": 6,
+      "narrow": 3,
+      "steps": 22,
+      "exact": true
+    }
+  ]
+}

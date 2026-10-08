@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+build/
+dist/
+*.egg-info/
+*.mlpackage/
+*.mlmodelc/
+*.safetensors
+*.npz
+*.npy
+local-manifest.json
+runs/
+model-release/

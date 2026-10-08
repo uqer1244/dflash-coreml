@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "status": "experimental-selector-gate-failed",
+  "contract": {"hidden_size": 5120, "feature_size": 25600, "block_size": 6, "capacity": 31, "rope_theta": 10000000, "shards": 3},
+  "packages": [{"path": "models/full-0.mlpackage", "files": {}}, {"path": "models/full-1.mlpackage", "files": {}}, {"path": "models/full-2.mlpackage", "files": {}}],
+  "context_packages": [{"path": "models/context-0.mlpackage", "files": {}}, {"path": "models/context-1.mlpackage", "files": {}}, {"path": "models/context-2.mlpackage", "files": {}}]
+}

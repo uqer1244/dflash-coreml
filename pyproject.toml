@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dflash-coreml"
+version = "0.1.0a1"
+description = "Experimental stateful Core ML drafter backbone for DFlash2"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT AND Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "LICENSES/*.txt"]
+dependencies = ["numpy>=1.26,<3"]
+classifiers = ["Development Status :: 3 - Alpha", "Operating System :: MacOS"]
+
+[project.optional-dependencies]
+generate = ["mlx==0.32.2", "mlx-vlm==0.7.1", "mlx-lm==0.32.0", "transformers==5.17.0"]
+
+[project.scripts]
+dflash-coreml = "dflash_coreml.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

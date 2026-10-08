@@ -1,0 +1,64 @@
+{
+  "gate": "BYTE_EXACT_BACKBONE_ADAPTER_PASS",
+  "reference": "Phase4.1 Native context/cached",
+  "scope": "four frozen fixtures, reset at17, prompt commits plus12 continuation features, capacity31 rollover; not new target generation benchmark",
+  "rows": [
+    {
+      "fixture": "short",
+      "feature_count": 23,
+      "next_position": 40,
+      "hidden_byte_exact": true,
+      "context_calls": 22
+    },
+    {
+      "fixture": "short",
+      "feature_count": 12,
+      "next_position": 52,
+      "hidden_byte_exact": true,
+      "context_calls": 11
+    },
+    {
+      "fixture": "medium",
+      "feature_count": 45,
+      "next_position": 62,
+      "hidden_byte_exact": true,
+      "context_calls": 44
+    },
+    {
+      "fixture": "medium",
+      "feature_count": 12,
+      "next_position": 74,
+      "hidden_byte_exact": true,
+      "context_calls": 11
+    },
+    {
+      "fixture": "code",
+      "feature_count": 30,
+      "next_position": 47,
+      "hidden_byte_exact": true,
+      "context_calls": 29
+    },
+    {
+      "fixture": "code",
+      "feature_count": 12,
+      "next_position": 59,
+      "hidden_byte_exact": true,
+      "context_calls": 11
+    },
+    {
+      "fixture": "reasoning",
+      "feature_count": 44,
+      "next_position": 61,
+      "hidden_byte_exact": true,
+      "context_calls": 43
+    },
+    {
+      "fixture": "reasoning",
+      "feature_count": 12,
+      "next_position": 73,
+      "hidden_byte_exact": true,
+      "context_calls": 11
+    }
+  ],
+  "swift_source_sha256": "fcd5d830eed26c1445ab81b5a4fca995091218b650585a97cd8fcd34bdbfc975"
+}
