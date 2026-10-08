@@ -1,6 +1,6 @@
 # dflash-coreml
 
-GitHub repository: **dflash-coreml**. Hugging Face model: **Qwen3.8-27B-DFlash2-CoreML**. [Distribution status](docs/DISTRIBUTION.md).
+GitHub repository: [**dflash-coreml**](https://github.com/uqer1244/dflash-coreml). Hugging Face model: **Qwen3.8-27B-DFlash2-CoreML**. [Distribution status](docs/DISTRIBUTION.md).
 
 **Source preview:** Core ML weights have not been published to Hugging Face yet. The HF example becomes runnable when the model repository is available; local prepared bundles can be used now. oMLX integration/PR is on hold.
 
