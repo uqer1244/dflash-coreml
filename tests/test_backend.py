@@ -67,7 +67,7 @@ for line in sys.stdin:
         stored=blobs/'manifest';stored.write_text(json.dumps(data))
         self.manifest.unlink();self.manifest.symlink_to(stored)
         result=load_manifest(self.manifest,True)
-        self.assertEqual(result['packages'],[str(package)]*3)
+        self.assertEqual(result['packages'],[str(package.resolve())]*3)
         weight.write_bytes(b'corrupted cache')
         with self.assertRaisesRegex(ValueError,'hash mismatch'):
             load_manifest(self.manifest,True)
