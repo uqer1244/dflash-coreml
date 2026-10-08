@@ -40,7 +40,7 @@ class CoreMLBackbone:
         self._arrays = {name: np.ndarray(SHAPES[name], np.float16, buffer=self._buffer,
                                        offset=row['offset']) for name,row in tensors.items()}
         config.update(directory=str(folder), buffer=str(folder/'buffer.bin'),
-                      buffer_bytes=size, tensors=tensors, copy_mode='cached')
+                      buffer_bytes=size, tensors=tensors)
         path = folder/'config.json'
         path.write_text(json.dumps(config))
         self._stderr = (folder/'stderr.log').open('w+')

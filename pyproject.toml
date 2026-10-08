@@ -9,7 +9,7 @@ description = "Experimental stateful Core ML drafter backbone for DFlash2"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT AND Apache-2.0"
-license-files = ["LICENSE", "NOTICE", "LICENSES/*.txt"]
+license-files = ["LICENSE", "NOTICE"]
 dependencies = ["numpy>=1.26,<3"]
 classifiers = ["Development Status :: 3 - Alpha", "Operating System :: MacOS"]
 

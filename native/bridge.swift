@@ -1,13 +1,10 @@
 import Foundation
 import CoreML
 import Darwin
-import os.signpost
-let traceLog=OSLog(subsystem:"org.ane-dflash.phase4",category:.pointsOfInterest)
 let config = try JSONSerialization.jsonObject(with: Data(contentsOf: URL(fileURLWithPath: CommandLine.arguments[1]))) as! [String:Any]
 let directory = config["directory"] as! String
 let options = MLModelConfiguration(); options.computeUnits = .cpuAndNeuralEngine
 let packages = config["packages"] as! [String]
-let copyMode=config["copy_mode"] as? String ?? "cached"
 var models: [MLModel] = []
 for (i,path) in packages.enumerated() {
     let compiled = try MLModel.compileModel(at: URL(fileURLWithPath:path))
@@ -62,10 +59,7 @@ while let line=readLine() {
     let start=now()
     for (i,model) in activeModels.enumerated() {
         provider=try MLDictionaryFeatureProvider(dictionary:feed.filter { model.modelDescription.inputDescriptionsByName[$0.key] != nil })
-        let sid=OSSignpostID(log:traceLog)
-        os_signpost(.begin,log:traceLog,name:"NeoShard",signpostID:sid,"shard=%d context_only=%d",i,committing ? 1 : 0)
         let t=now();let result=try model.prediction(from:provider,using:states[i])
-        os_signpost(.end,log:traceLog,name:"NeoShard",signpostID:sid,"shard=%d context_only=%d",i,committing ? 1 : 0)
         if !committing {hidden=result.featureValue(for:"hidden")!.multiArrayValue!}
         shardMS.append(Double(now()-t)/1e6)
         if i<models.count-1 {
@@ -89,7 +83,7 @@ while let line=readLine() {
         let strideC=hidden.strides[1].intValue,strideS=hidden.strides[3].intValue
         precondition(strideC>0 && strideS>0 && hidden.strides.count==4)
         for c in 0..<5120 { for s in 0..<6 {
-            let index=copyMode=="legacy" ? c*hidden.strides[1].intValue+s*hidden.strides[3].intValue : c*strideC+s*strideS
+            let index=c*strideC+s*strideS
             let value=source[index]
             finite = finite && value.isFinite;dest[c*6+s]=value
         } }

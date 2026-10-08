@@ -3,7 +3,7 @@ src/dflash_coreml/target.py adapts the packed Hadamard operators and validation
 from oMLX's prism_hadamard_qwen35 implementation, distributed under Apache-2.0.
 It changes loading to text-only local checkpoints without an app installation.
 Upstream: https://github.com/jundot/omlx (Jundot and oMLX contributors).
-The Apache license is included in LICENSES/Apache-2.0.txt.
+The MIT and Apache license texts are included in LICENSE.
 The remaining project code is under the included MIT license.
 It does not bundle Apple frameworks, the rest of MLX/oMLX/dflash-mlx, the official
 CandidateSelector implementation, target checkpoints or converted model weights.
